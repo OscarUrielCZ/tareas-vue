@@ -1,0 +1,41 @@
+h4 {
+	font-size: 55px;
+}
+
+h5	{
+	font-size: 45px; 
+}
+
+small,ul>li>a {
+	font-size: 27px;
+}
+
+p {
+	font-size: 35px;
+}
+
+i {
+	font-size: 35px !important;
+}
+
+input, textarea {
+	font-size: 30px !important;
+}
+
+input[type="submit"], input[type="button"] {
+	width: auto;
+	height: auto;
+	padding: 10px;
+}
+
+.brand-logo {
+	font-size: 40px !important;
+}
+
+.card-title {
+	font-size: 50px !important;
+}
+
+#task-list {
+	margin-top: 30px;
+}

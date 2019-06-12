@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 320px) and (max-device-width: 700px)" href="css/mobile.css" />
+	<link rel="stylesheet" type="text/css" media="screen and (min-device-width: 701px)" href="css/main.css">
+	<title>Tareas</title>
+</head>
+<body>
+	<nav class="teal lighten-2 fixed-navbar">
+		<div class="nav-wrapper container">
+			<a href="home.html" class="brand-logo left">Tareas VUE</a>
+			<ul class="right">
+				<li><a href="home.html">Home</a></li>
+				<li><a href="tasks.html">Tareas</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div id="app">
+		<div class="row container section">
+			<div class="col m12 l6">
+				<h4>Agrega una nueva tarea</h4>
+				<form @submit="saveHW" >
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="text" name="title" class="validate" placeholder="Título de la tarea" v-model="newhw.title" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="text" name="subject" class="validate" placeholder="Materia" v-model="newhw.subject" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea class="materialize-textarea" name="description" placeholder="Especifica la tarea" v-model="newhw.description" required></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<input type="text" name="date" class="datepicker validate" placeholder="Fecha de entrega" v-model="newhw.date" required>
+						</div>
+					</div>
+					<div v-if="mode == 'create'">
+						<input type="submit" class="btn" value="Agregar">
+					</div>
+					<div v-else>
+						<input type="button" class="btn red" value="Cancelar" @click="cancelModify">
+						<input type="button" class="btn green" value="Guardar" @click="updateHW(newhw.index)">
+					</div>
+				</form>
+			</div>
+			<div id="task-list" class="col m12 l6">
+				<h4>Tareas de la semana</h4>
+				<div v-if="getTasks.length != 0" class="week-hws">
+					<ul class="collection">
+						<li class="collection-item" :class="elem.state ? 'green lighten-4' : 'red lighten-4' " v-for="(elem, index) in getTasks">
+							<div class="row">
+								<div>
+									<h5>{{ elem.title }}</h5>
+									<small>{{ elem.subject }}, para {{ elem.date }}</small>
+									<p>{{ elem.description }}</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div v-else>
+					<p class="section grey-text center">No hay tareas por hacer</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="js/mydates.js"></script>
+	<script src="js/materialize-config.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

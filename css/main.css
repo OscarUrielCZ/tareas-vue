@@ -1,0 +1,14 @@
+i:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.week-hws {
+	overflow-y: scroll;
+	max-height: 450px;
+}
+
+.task>.card-content {
+	overflow-y: scroll;
+	height: 180px;
+}
